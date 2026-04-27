@@ -1,0 +1,621 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pedigree — Investor & GTM Hub</title>
+  <style>
+    :root {
+      --bg: #0a0e1a;
+      --surface: #111827;
+      --border: #1f2937;
+      --accent: #6366f1;
+      --accent2: #818cf8;
+      --text: #f1f5f9;
+      --muted: #94a3b8;
+      --green: #10b981;
+      --red: #ef4444;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { background: var(--bg); color: var(--text); font-family: 'Inter', system-ui, sans-serif; line-height: 1.6; }
+    a { color: var(--accent2); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    /* NAV */
+    nav { background: var(--surface); border-bottom: 1px solid var(--border); padding: 1rem 2rem; display: flex; align-items: center; gap: 2rem; position: sticky; top: 0; z-index: 100; }
+    .nav-logo { font-size: 1.2rem; font-weight: 700; color: var(--text); display: flex; align-items: center; gap: 0.5rem; }
+    .nav-logo span { color: var(--accent2); }
+    .nav-links { display: flex; gap: 1.5rem; flex-wrap: wrap; }
+    .nav-links a { color: var(--muted); font-size: 0.9rem; }
+    .nav-links a:hover { color: var(--text); text-decoration: none; }
+
+    /* HERO */
+    .hero { padding: 5rem 2rem 4rem; text-align: center; max-width: 900px; margin: 0 auto; }
+    .hero-badge { display: inline-block; background: rgba(99,102,241,0.15); border: 1px solid rgba(99,102,241,0.4); color: var(--accent2); font-size: 0.8rem; padding: 0.3rem 0.8rem; border-radius: 2rem; margin-bottom: 1.5rem; letter-spacing: 0.05em; text-transform: uppercase; }
+    .hero h1 { font-size: clamp(2rem, 5vw, 3.5rem); font-weight: 800; line-height: 1.15; margin-bottom: 1.5rem; }
+    .hero h1 em { color: var(--accent2); font-style: normal; }
+    .hero p { font-size: 1.15rem; color: var(--muted); max-width: 680px; margin: 0 auto 2.5rem; }
+    .hero-cta { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
+    .btn { display: inline-block; padding: 0.75rem 1.75rem; border-radius: 0.5rem; font-weight: 600; font-size: 0.95rem; transition: all 0.2s; cursor: pointer; }
+    .btn-primary { background: var(--accent); color: white; }
+    .btn-primary:hover { background: var(--accent2); text-decoration: none; color: white; }
+    .btn-outline { border: 1px solid var(--border); color: var(--text); }
+    .btn-outline:hover { border-color: var(--accent2); text-decoration: none; }
+
+    /* STATS */
+    .stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1.5rem; max-width: 1100px; margin: 0 auto; padding: 0 2rem 4rem; }
+    .stat-card { background: var(--surface); border: 1px solid var(--border); border-radius: 0.75rem; padding: 1.5rem; text-align: center; }
+    .stat-num { font-size: 2rem; font-weight: 800; color: var(--accent2); }
+    .stat-label { font-size: 0.85rem; color: var(--muted); margin-top: 0.25rem; }
+
+    /* SECTIONS */
+    .section { max-width: 1100px; margin: 0 auto; padding: 3rem 2rem; }
+    .section-title { font-size: 1.6rem; font-weight: 700; margin-bottom: 0.5rem; }
+    .section-sub { color: var(--muted); margin-bottom: 2rem; font-size: 0.95rem; }
+    .divider { border: none; border-top: 1px solid var(--border); margin: 3rem 0; }
+
+    /* CARDS GRID */
+    .cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; }
+    .card { background: var(--surface); border: 1px solid var(--border); border-radius: 0.75rem; padding: 1.75rem; transition: border-color 0.2s; }
+    .card:hover { border-color: var(--accent); }
+    .card-icon { font-size: 1.75rem; margin-bottom: 1rem; }
+    .card h3 { font-size: 1.05rem; font-weight: 700; margin-bottom: 0.5rem; }
+    .card p { font-size: 0.9rem; color: var(--muted); }
+    .card-link { display: inline-block; margin-top: 1rem; font-size: 0.85rem; color: var(--accent2); }
+
+    /* TABLE */
+    .table-wrap { overflow-x: auto; border-radius: 0.75rem; border: 1px solid var(--border); }
+    table { width: 100%; border-collapse: collapse; }
+    th { background: var(--surface); padding: 0.85rem 1.25rem; text-align: left; font-size: 0.85rem; color: var(--muted); text-transform: uppercase; letter-spacing: 0.05em; border-bottom: 1px solid var(--border); }
+    td { padding: 0.85rem 1.25rem; font-size: 0.9rem; border-bottom: 1px solid var(--border); vertical-align: top; }
+    tr:last-child td { border-bottom: none; }
+    tr:hover td { background: rgba(99,102,241,0.04); }
+    .check { color: var(--green); }
+    .cross { color: var(--red); }
+
+    /* QUOTE */
+    blockquote { border-left: 3px solid var(--accent); padding: 1rem 1.5rem; margin: 1.5rem 0; background: rgba(99,102,241,0.06); border-radius: 0 0.5rem 0.5rem 0; }
+    blockquote p { font-size: 1.05rem; font-style: italic; color: var(--text); }
+
+    /* ARCH DIAGRAM */
+    .arch { background: var(--surface); border: 1px solid var(--border); border-radius: 0.75rem; padding: 2rem; font-family: monospace; font-size: 0.85rem; color: var(--muted); overflow-x: auto; white-space: pre; line-height: 1.8; }
+
+    /* TAG */
+    .tag { display: inline-block; background: rgba(99,102,241,0.15); color: var(--accent2); font-size: 0.75rem; padding: 0.2rem 0.6rem; border-radius: 0.3rem; margin: 0.2rem; }
+    .tag-green { background: rgba(16,185,129,0.15); color: var(--green); }
+    .tag-red { background: rgba(239,68,68,0.12); color: var(--red); }
+
+    /* FOOTER */
+    footer { border-top: 1px solid var(--border); padding: 2rem; text-align: center; color: var(--muted); font-size: 0.85rem; margin-top: 4rem; }
+  </style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-logo">🏷️ <span>Pedigree</span></div>
+  <div class="nav-links">
+    <a href="#thesis">Thesis</a>
+    <a href="#market">Market</a>
+    <a href="#competitive">Competitive</a>
+    <a href="#architecture">Architecture</a>
+    <a href="#gtm">GTM</a>
+    <a href="#deck">Deck</a>
+    <a href="#onepager">One-Pager</a>
+    <a href="https://github.com/mattrob333/pedigree4" target="_blank">GitHub →</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-badge">Seed Stage · Enterprise AI Governance</div>
+  <h1>The <em>platform-agnostic</em><br>human-agent lineage layer</h1>
+  <p>Pedigree wires every enterprise AI agent to the live HRIS org chart — so when the human leaves, the agent dies. When scope changes, it cascades. Every action is traceable.</p>
+  <div class="hero-cta">
+    <a href="#thesis" class="btn btn-primary">Read the Thesis</a>
+    <a href="#deck" class="btn btn-outline">Investor Deck</a>
+  </div>
+</div>
+
+<!-- STATS -->
+<div class="stats">
+  <div class="stat-card">
+    <div class="stat-num">$12.2B</div>
+    <div class="stat-label">NHI Market Size 2026</div>
+  </div>
+  <div class="stat-card">
+    <div class="stat-num">$38.8B</div>
+    <div class="stat-label">NHI Market Size 2036</div>
+  </div>
+  <div class="stat-card">
+    <div class="stat-num">91%</div>
+    <div class="stat-label">Enterprises using AI agents</div>
+  </div>
+  <div class="stat-card">
+    <div class="stat-num">10%</div>
+    <div class="stat-label">Have a governance strategy</div>
+  </div>
+  <div class="stat-card">
+    <div class="stat-num">$1B</div>
+    <div class="stat-label">ServiceNow acquired Veza (Dec 2025)</div>
+  </div>
+  <div class="stat-card">
+    <div class="stat-num">&lt;60s</div>
+    <div class="stat-label">Full agent cascade on HR termination</div>
+  </div>
+</div>
+
+<hr class="divider" style="max-width:1100px;margin:0 auto 3rem;">
+
+<!-- THESIS -->
+<div class="section" id="thesis">
+  <div class="section-title">The Winning Thesis</div>
+  <div class="section-sub">Why Pedigree wins as a complement layer, not a competitor</div>
+
+  <blockquote>
+    <p>"Pedigree is the platform-agnostic human-agent lineage layer — the governance primitive that every enterprise needs regardless of whether they run Microsoft, AWS, Google, Salesforce, or custom AI agents. We don't compete with the hyperscalers; we complete them."</p>
+  </blockquote>
+
+  <h3 style="margin:2rem 0 1rem;font-size:1.15rem;">The Three Timing Factors</h3>
+  <div class="cards">
+    <div class="card">
+      <div class="card-icon">🪟</div>
+      <h3>Microsoft created the vacuum</h3>
+      <p>Entra Agent ID + Agent 365 launches at $15/user/month. Every enterprise that evaluates it immediately asks: what about non-Microsoft agents? What about HRIS integration? What about agents owned by people who left? Pedigree answers all three.</p>
+    </div>
+    <div class="card">
+      <div class="card-icon">🔄</div>
+      <h3>ServiceNow/Veza creates churn</h3>
+      <p>ServiceNow acquired Veza for $1B (Dec 2025). Veza customers are uncertain about roadmap. There is a 12–18 month window where CISOs reconsidering Veza are evaluating alternatives. Pedigree enters with a sharper, more specific story.</p>
+    </div>
+    <div class="card">
+      <div class="card-icon">⚖️</div>
+      <h3>Compliance deadlines are real</h3>
+      <p>SOX audit season is coming. HIPAA enforcement on AI is coming. "We're figuring it out" stops working when the auditor asks who owns the agent that accessed patient records at 2am. Pedigree produces the audit bundle.</p>
+    </div>
+  </div>
+
+  <h3 style="margin:2.5rem 0 1rem;font-size:1.15rem;">The Moat: HRIS as Source of Truth</h3>
+  <p style="color:var(--muted);margin-bottom:1.5rem;">The HRIS org chart is the only authoritative source of human identity that spans every enterprise system. Workday, UKG, and ADP are the systems of record for who works at the company, what their role is, who their manager is, and when they leave.</p>
+  <p style="color:var(--muted);">Every other identity system (Entra, Okta, Ping) is downstream of HR. Every agent platform is downstream of those. Pedigree sits at the root — and once the graph is built, ripping it out means rebuilding years of lineage history and re-certifying thousands of agents manually.</p>
+
+  <div class="arch" style="margin-top:1.5rem;">┌──────────────────────────────────────────────────────────┐
+│                    PEDIGREE                               │
+│      Platform-Agnostic Human-Agent Lineage Layer          │
+│  (works with any agent, any cloud, any IdP)               │
+└───────────────────────────────────────────────────────────┘
+        ↕                   ↕                   ↕
+  Microsoft Entra      AWS Bedrock         Salesforce
+  Agent ID + 365       AgentCore           Einstein AI
+  Copilot Studio       Lambda              Custom Agents
+        ↕                   ↕                   ↕
+┌──────────────────────────────────────────────────────────┐
+│              HRIS (Workday / UKG / ADP)                   │
+│         The Ground Truth for Human Identity               │
+└──────────────────────────────────────────────────────────┘</div>
+</div>
+
+<hr class="divider" style="max-width:1100px;margin:0 auto;">
+
+<!-- MARKET -->
+<div class="section" id="market">
+  <div class="section-title">Market Opportunity</div>
+  <div class="section-sub">Why now is the right time to build this</div>
+
+  <div class="cards">
+    <div class="card">
+      <div class="card-icon">📊</div>
+      <h3>NHI Access Management TAM</h3>
+      <p><strong style="color:var(--accent2);">$12.2B in 2026 → $38.8B by 2036</strong> at ~12% CAGR. Machine identities already outnumber humans 25–100× at enterprise scale. The category is entering its hypergrowth phase.</p>
+    </div>
+    <div class="card">
+      <div class="card-icon">🚨</div>
+      <h3>The Governance Gap</h3>
+      <p>91% of enterprises are using AI agents. Only 10% have a governance strategy. Only 22% treat agents as independent identities. 90% report suspected or confirmed security incidents involving AI agents.</p>
+    </div>
+    <div class="card">
+      <div class="card-icon">🏢</div>
+      <h3>Gartner's Call</h3>
+      <p>Gartner's 2026 IAM Predictions: NHI visibility is "no longer optional." IAM leaders must act as human and machine identities have emerged as the primary attack surface in enterprise security.</p>
+    </div>
+    <div class="card">
+      <div class="card-icon">💰</div>
+      <h3>Category Validation</h3>
+      <p>ServiceNow paid $1B for Veza (Dec 2025) — the clearest possible signal that enterprise agent governance is a standalone category worth investing in. Pedigree's unique angle is unoccupied.</p>
+    </div>
+  </div>
+
+  <h3 style="margin:2.5rem 0 1rem;font-size:1.15rem;">Key Market Data Points</h3>
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>Source</th><th>Finding</th><th>Date</th></tr></thead>
+      <tbody>
+        <tr><td>Yahoo Finance / Market Research</td><td>NHI Access Management: $12.2B (2026) → $38.8B (2036)</td><td>2026</td></tr>
+        <tr><td>Fortune / Okta</td><td>91% of orgs using AI agents; only 10% have governance strategy</td><td>Apr 2026</td></tr>
+        <tr><td>Gravitee</td><td>22% treat agents as independent identities; 90% report security incidents</td><td>2026</td></tr>
+        <tr><td>Strata.io</td><td>Only 23% have formal enterprise-wide agent identity strategy</td><td>2026</td></tr>
+        <tr><td>Gartner</td><td>NHI visibility "no longer optional"; primary attack surface emerging</td><td>Jan 2026</td></tr>
+        <tr><td>Forbes</td><td>AWS, Microsoft, Google all racing to build agent registries — validates category</td><td>Apr 2026</td></tr>
+        <tr><td>ServiceNow</td><td>Acquired Veza for $1B to govern AI agent permissions at scale</td><td>Dec 2025</td></tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<hr class="divider" style="max-width:1100px;margin:0 auto;">
+
+<!-- COMPETITIVE -->
+<div class="section" id="competitive">
+  <div class="section-title">Competitive Landscape</div>
+  <div class="section-sub">Why the hyperscalers can't fill this gap</div>
+
+  <div class="table-wrap" style="margin-bottom:2rem;">
+    <table>
+      <thead>
+        <tr>
+          <th>Capability</th>
+          <th>Entra Agent ID + 365</th>
+          <th>ServiceNow + Veza</th>
+          <th>Britive / PlainID</th>
+          <th>Pedigree</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Agent identity</td>
+          <td><span class="check">✓ Best in class</span></td>
+          <td><span class="check">✓ Good</span></td>
+          <td><span class="check">✓ Good</span></td>
+          <td>Uses Entra as foundation</td>
+        </tr>
+        <tr>
+          <td>Multi-platform agent support</td>
+          <td><span class="cross">✗ M365/Copilot only</span></td>
+          <td><span class="check">✓ Broad discovery</span></td>
+          <td><span class="check">✓ Runtime</span></td>
+          <td><span class="check">✓ All agents, all clouds</span></td>
+        </tr>
+        <tr>
+          <td>HRIS-verified human parent</td>
+          <td><span class="cross">✗ Owner field only</span></td>
+          <td><span class="cross">✗ Flat mapping</span></td>
+          <td><span class="cross">✗ None</span></td>
+          <td><span class="check">✓ Core feature</span></td>
+        </tr>
+        <tr>
+          <td>Org chart lineage graph</td>
+          <td><span class="cross">✗</span></td>
+          <td><span class="cross">✗</span></td>
+          <td><span class="cross">✗</span></td>
+          <td><span class="check">✓ Core feature</span></td>
+        </tr>
+        <tr>
+          <td>HR-driven cascade deprovision</td>
+          <td><span class="cross">✗ Manual process</span></td>
+          <td><span class="cross">✗</span></td>
+          <td><span class="cross">✗</span></td>
+          <td><span class="check">✓ Automated &lt;60s</span></td>
+        </tr>
+        <tr>
+          <td>Strict parent-scope inheritance</td>
+          <td><span class="cross">✗</span></td>
+          <td><span class="cross">✗</span></td>
+          <td><span class="check">✓ JIT/ZSP</span></td>
+          <td><span class="check">✓ OAuth 2.1 Token Exchange</span></td>
+        </tr>
+        <tr>
+          <td>SoD enforcement in org terms</td>
+          <td><span class="cross">✗</span></td>
+          <td><span class="cross">✗</span></td>
+          <td><span class="check">✓ Partial</span></td>
+          <td><span class="check">✓ Policy engine</span></td>
+        </tr>
+        <tr>
+          <td>App owner console</td>
+          <td><span class="cross">✗</span></td>
+          <td><span class="cross">✗</span></td>
+          <td><span class="cross">✗</span></td>
+          <td><span class="check">✓ Core feature</span></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <blockquote>
+    <p>"Entra tells you <em>who</em> the agent is. Pedigree tells you <em>why</em> it exists, <em>what</em> it can do forever, and <em>what happens when the human leaves.</em>"</p>
+  </blockquote>
+
+  <h3 style="margin:2rem 0 1rem;font-size:1.15rem;">The Investor Parallel</h3>
+  <div class="cards">
+    <div class="card">
+      <div class="card-icon">🔐</div>
+      <h3>The Okta Parallel</h3>
+      <p>Okta didn't compete with Active Directory — it made AD usable across cloud apps. It became the identity layer every SaaS app integrated with. $17B market cap. Pedigree makes Entra's governance complete across every agent platform.</p>
+    </div>
+    <div class="card">
+      <div class="card-icon">❄️</div>
+      <h3>The Snowflake Parallel</h3>
+      <p>Snowflake didn't compete with data warehouses — it became the cross-cloud data layer above them all. $50B+ peak market cap. Pedigree becomes the cross-platform governance layer above every agent runtime.</p>
+    </div>
+    <div class="card">
+      <div class="card-icon">🎯</div>
+      <h3>The Partnership Play</h3>
+      <p>Microsoft Partner Network is the enterprise GTM motion. "Pedigree-certified for Entra Agent ID" is a credible enterprise sales story that doesn't require fighting a $3T company — it requires riding their wave.</p>
+    </div>
+  </div>
+</div>
+
+<hr class="divider" style="max-width:1100px;margin:0 auto;">
+
+<!-- ARCHITECTURE -->
+<div class="section" id="architecture">
+  <div class="section-title">How It Works</div>
+  <div class="section-sub">The 5-layer architecture that solves all 8 gaps at once</div>
+
+  <h3 style="margin-bottom:1rem;font-size:1rem;color:var(--muted);text-transform:uppercase;letter-spacing:0.05em;">The 8 Gaps (Validated by Wesco/Anixter Fortune 500)</h3>
+  <div class="cards" style="margin-bottom:2.5rem;">
+    <div class="card"><div class="card-icon">👤</div><h3>1. No ownership attribution</h3><p>Agents have no tie to a named human. When the human leaves, the agent goes rogue with live credentials.</p></div>
+    <div class="card"><div class="card-icon">🔒</div><h3>2. No scope enforcement</h3><p>Agents routinely receive entitlements beyond their creator's access level.</p></div>
+    <div class="card"><div class="card-icon">⚠️</div><h3>3. No SoD for agents</h3><p>Toxic action combinations that would be blocked for humans are trivial for agents.</p></div>
+    <div class="card"><div class="card-icon">👁️</div><h3>4. No app-owner approval</h3><p>ServiceNow, Oracle, SAP, Salesforce owners have zero visibility or veto on agents calling their systems.</p></div>
+    <div class="card"><div class="card-icon">♻️</div><h3>5. No lifecycle management</h3><p>No provisioning workflow, no recertification, no HR-tied deprovisioning. Agents accumulate forever.</p></div>
+    <div class="card"><div class="card-icon">🛡️</div><h3>6. No runtime enforcement</h3><p>Discovery tools exist. Inline gateway checking every tool call against policy is unsolved at scale.</p></div>
+    <div class="card"><div class="card-icon">🚫</div><h3>7. No data exfiltration guardrails</h3><p>Agents can scoop PII/PHI/PCI far beyond intended scope.</p></div>
+    <div class="card"><div class="card-icon">📋</div><h3>8. Audit trail gaps</h3><p>Even Microsoft Copilot has documented cases bypassing M365 logs when acting on behalf of users.</p></div>
+  </div>
+
+  <h3 style="margin-bottom:1rem;font-size:1rem;color:var(--muted);text-transform:uppercase;letter-spacing:0.05em;">The 5-Layer Solution</h3>
+  <div style="display:flex;flex-direction:column;gap:1rem;">
+    <div class="card" style="display:flex;gap:1rem;align-items:flex-start;">
+      <div style="background:rgba(99,102,241,0.2);color:var(--accent2);font-weight:800;padding:0.5rem 0.85rem;border-radius:0.4rem;font-size:1rem;flex-shrink:0;">L1</div>
+      <div><h3>Shadow Org Graph</h3><p style="color:var(--muted);">Ingest HRIS → live human graph → hang agents as child nodes. HR termination = cascade deprovision of entire agent subtree in &lt;60 seconds.</p></div>
+    </div>
+    <div class="card" style="display:flex;gap:1rem;align-items:flex-start;">
+      <div style="background:rgba(99,102,241,0.2);color:var(--accent2);font-weight:800;padding:0.5rem 0.85rem;border-radius:0.4rem;font-size:1rem;flex-shrink:0;">L2</div>
+      <div><h3>Credential Clone Engine</h3><p style="color:var(--muted);">Auto-issue scoped OAuth 2.1 credentials via Token Exchange (RFC 8693) against parent's live entitlements. Agent cannot exceed parent's access. Never copies — always derivatives.</p></div>
+    </div>
+    <div class="card" style="display:flex;gap:1rem;align-items:flex-start;">
+      <div style="background:rgba(99,102,241,0.2);color:var(--accent2);font-weight:800;padding:0.5rem 0.85rem;border-radius:0.4rem;font-size:1rem;flex-shrink:0;">L3</div>
+      <div><h3>MCP-Aware API Brokerage Gateway</h3><p style="color:var(--muted);">Sits between every agent and every target system. Intercepts every tool call, verifies parent scope, evaluates SoD/DLP, passes/blocks/redacts/escalates. &lt;5ms p99 added latency target.</p></div>
+    </div>
+    <div class="card" style="display:flex;gap:1rem;align-items:flex-start;">
+      <div style="background:rgba(99,102,241,0.2);color:var(--accent2);font-weight:800;padding:0.5rem 0.85rem;border-radius:0.4rem;font-size:1rem;flex-shrink:0;">L4</div>
+      <div><h3>App Owner Console</h3><p style="color:var(--muted);">Every ServiceNow, Oracle, SAP, Salesforce owner sees exactly which agents call their system, the parent human, 30-day action history, and one-click revoke. Turns app owners into internal champions.</p></div>
+    </div>
+    <div class="card" style="display:flex;gap:1rem;align-items:flex-start;">
+      <div style="background:rgba(99,102,241,0.2);color:var(--accent2);font-weight:800;padding:0.5rem 0.85rem;border-radius:0.4rem;font-size:1rem;flex-shrink:0;">L5</div>
+      <div><h3>SoD & DLP Runtime Engines</h3><p style="color:var(--muted);">Inline SoD watches for toxic action combinations based on parent's org position. DLP classifies and redacts data flowing back to agents. Rules in Rego/OPA — tools IGA teams already know.</p></div>
+    </div>
+  </div>
+</div>
+
+<hr class="divider" style="max-width:1100px;margin:0 auto;">
+
+<!-- GTM -->
+<div class="section" id="gtm">
+  <div class="section-title">Go-to-Market Strategy</div>
+  <div class="section-sub">Speed-first motion built around the Orphan List</div>
+
+  <div class="cards" style="margin-bottom:2.5rem;">
+    <div class="card">
+      <div class="card-icon">🔍</div>
+      <h3>Land: The Orphan List</h3>
+      <p><strong>Free tier.</strong> Connect HRIS + Entra → generate the "Orphan List" in 48 hours. Every enterprise has agents still active with live credentials owned by people who left. When the CISO sees 47 active agents owned by departed employees, Pedigree sells itself.</p>
+      <span class="tag tag-green">Free to deploy</span>
+    </div>
+    <div class="card">
+      <div class="card-icon">📈</div>
+      <h3>Expand: Per-Agent Pricing</h3>
+      <p><strong>$75–200/agent/month</strong> depending on tier. Expected 500–5,000 agents per F500 customer. Discovery is free; the platform that prevents orphans is paid.</p>
+      <span class="tag">Core: $75-100/agent</span>
+      <span class="tag">Enterprise: $150-200/agent</span>
+    </div>
+    <div class="card">
+      <div class="card-icon">🏭</div>
+      <h3>Design Partner: Wesco/Anixter</h3>
+      <p><strong>Fortune 500 launch partner.</strong> Head of IAM has articulated the exact 8-gap spec. They are blocking Copilot Studio deployment until governance exists. PoC success = category proof + first reference customer.</p>
+      <span class="tag tag-green">Active relationship</span>
+    </div>
+  </div>
+
+  <h3 style="margin-bottom:1rem;font-size:1.15rem;">Unit Economics</h3>
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>Scenario</th><th>Agents</th><th>$/agent/mo</th><th>ARR/customer</th><th>10 customers</th></tr></thead>
+      <tbody>
+        <tr><td>Small enterprise</td><td>500</td><td>$100</td><td>$600K</td><td>$6M ARR</td></tr>
+        <tr><td>Mid enterprise</td><td>1,000</td><td>$100</td><td>$1.2M</td><td>$12M ARR</td></tr>
+        <tr><td>Large enterprise</td><td>5,000</td><td>$75</td><td>$4.5M</td><td>$45M ARR</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h3 style="margin:2.5rem 0 1rem;font-size:1.15rem;">Target ICPs (Priority Order)</h3>
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>Persona</th><th>Title</th><th>Why They Buy</th><th>Message</th></tr></thead>
+      <tbody>
+        <tr>
+          <td><strong>Economic Buyer</strong></td>
+          <td>CISO / Head of IAM</td>
+          <td>Audit risk, orphan agents, compliance mandates</td>
+          <td>"Stop the agent sprawl before your next SOX audit"</td>
+        </tr>
+        <tr>
+          <td><strong>Internal Champion</strong></td>
+          <td>App Owner (ServiceNow, SAP, Oracle)</td>
+          <td>Mystery agents calling their systems, no visibility</td>
+          <td>"One-click revoke for any agent calling your system"</td>
+        </tr>
+        <tr>
+          <td><strong>Business Buyer</strong></td>
+          <td>CIO / CEO</td>
+          <td>Unblock Copilot/AI deployment blocked by security</td>
+          <td>"Unblock your AI productivity without creating a compliance nightmare"</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h3 style="margin:2.5rem 0 1rem;font-size:1.15rem;">90-Day PoC Plan (Wesco)</h3>
+  <div style="display:flex;flex-direction:column;gap:0.75rem;">
+    <div style="display:flex;gap:1rem;align-items:center;background:var(--surface);border:1px solid var(--border);padding:1rem 1.25rem;border-radius:0.5rem;">
+      <span style="color:var(--accent2);font-weight:700;min-width:80px;">Days 1-30</span>
+      <span style="color:var(--muted);">HRIS sync (Workday) + Entra Agent inventory → generate Orphan List → demo to CISO</span>
+    </div>
+    <div style="display:flex;gap:1rem;align-items:center;background:var(--surface);border:1px solid var(--border);padding:1rem 1.25rem;border-radius:0.5rem;">
+      <span style="color:var(--accent2);font-weight:700;min-width:80px;">Days 31-60</span>
+      <span style="color:var(--muted);">Parent assignment for top 50 agents + basic scope enforcement + App Owner Console v1</span>
+    </div>
+    <div style="display:flex;gap:1rem;align-items:center;background:var(--surface);border:1px solid var(--border);padding:1rem 1.25rem;border-radius:0.5rem;">
+      <span style="color:var(--accent2);font-weight:700;min-width:80px;">Days 61-90</span>
+      <span style="color:var(--muted);">Live cascade deprovision demo on simulated termination → audit bundle export → contract conversation</span>
+    </div>
+  </div>
+</div>
+
+<hr class="divider" style="max-width:1100px;margin:0 auto;">
+
+<!-- INVESTOR DECK -->
+<div class="section" id="deck">
+  <div class="section-title">Investor Deck Outline</div>
+  <div class="section-sub">12-slide structure for seed/Series A conversations</div>
+
+  <div style="display:flex;flex-direction:column;gap:0.75rem;">
+    <div class="card" style="display:flex;gap:1rem;">
+      <span style="color:var(--accent2);font-weight:800;font-size:1.1rem;min-width:2rem;">1</span>
+      <div><h3>Title + Positioning</h3><p style="color:var(--muted);">"Every Agent Has a Pedigree." — The org chart your AI agents are missing. Platform-agnostic human-agent lineage for the enterprise.</p></div>
+    </div>
+    <div class="card" style="display:flex;gap:1rem;">
+      <span style="color:var(--accent2);font-weight:800;font-size:1.1rem;min-width:2rem;">2</span>
+      <div><h3>The 8 Gaps</h3><p style="color:var(--muted);">Validated by Wesco/Anixter (Fortune 500 Head of IAM). Each gap visualized with a before/after. The "orphan agent" story hits hardest — 47 active agents, all owned by people who left.</p></div>
+    </div>
+    <div class="card" style="display:flex;gap:1rem;">
+      <span style="color:var(--accent2);font-weight:800;font-size:1.1rem;min-width:2rem;">3</span>
+      <div><h3>Market Explosion</h3><p style="color:var(--muted);">$12.2B → $38.8B NHI market. 91% of enterprises using agents. Only 10% have governance. Gartner. $1B Veza acquisition. This is the right moment.</p></div>
+    </div>
+    <div class="card" style="display:flex;gap:1rem;">
+      <span style="color:var(--accent2);font-weight:800;font-size:1.1rem;min-width:2rem;">4</span>
+      <div><h3>The Thesis: Two Org Charts</h3><p style="color:var(--muted);">Every enterprise has two org charts: the human one (Workday) and the hidden agent one (scattered, unowned, ungoverned). Pedigree merges them.</p></div>
+    </div>
+    <div class="card" style="display:flex;gap:1rem;">
+      <span style="color:var(--accent2);font-weight:800;font-size:1.1rem;min-width:2rem;">5</span>
+      <div><h3>The 5 Layers</h3><p style="color:var(--muted);">Shadow Org Graph → Credential Clone Engine → MCP Gateway → App Owner Console → SoD/DLP. One diagram. Each layer a force multiplier on the previous.</p></div>
+    </div>
+    <div class="card" style="display:flex;gap:1rem;">
+      <span style="color:var(--accent2);font-weight:800;font-size:1.1rem;min-width:2rem;">6</span>
+      <div><h3>Why We Win: Platform-Agnostic</h3><p style="color:var(--muted);">We don't compete with Entra, Veza, or AWS. We complete them. The comparison table. "Entra tells you who the agent is. Pedigree tells you why it exists."</p></div>
+    </div>
+    <div class="card" style="display:flex;gap:1rem;">
+      <span style="color:var(--accent2);font-weight:800;font-size:1.1rem;min-width:2rem;">7</span>
+      <div><h3>Why Now</h3><p style="color:var(--muted);">Entra Agent ID just launched — created the vacuum. Veza acquired — created churn. Compliance deadlines arriving. 12–18 month window. Move fast or lose the category.</p></div>
+    </div>
+    <div class="card" style="display:flex;gap:1rem;">
+      <span style="color:var(--accent2);font-weight:800;font-size:1.1rem;min-width:2rem;">8</span>
+      <div><h3>Design Partner Proof</h3><p style="color:var(--muted);">Wesco International (Fortune 500). Head of IAM articulated the exact 8-gap spec. Blocking Copilot until governance exists. This is the design partner PoC — 90-day plan, success metrics.</p></div>
+    </div>
+    <div class="card" style="display:flex;gap:1rem;">
+      <span style="color:var(--accent2);font-weight:800;font-size:1.1rem;min-width:2rem;">9</span>
+      <div><h3>Business Model & GTM</h3><p style="color:var(--muted);">Free Orphan List → $75-200/agent/month. Land with CISO. Expand through app owners. Enterprise contracts $500K–$2M ARR. Unit economics at 1,000 agents = $1.2M ARR/customer.</p></div>
+    </div>
+    <div class="card" style="display:flex;gap:1rem;">
+      <span style="color:var(--accent2);font-weight:800;font-size:1.1rem;min-width:2rem;">10</span>
+      <div><h3>What's Built</h3><p style="color:var(--muted);">FastAPI backend, React UI, mock Microsoft service, Neo4j + Postgres schema, Docker demo stack, CI/CD, full docs. Demo-ready MVP scaffold. Honest about what's next.</p></div>
+    </div>
+    <div class="card" style="display:flex;gap:1rem;">
+      <span style="color:var(--accent2);font-weight:800;font-size:1.1rem;min-width:2rem;">11</span>
+      <div><h3>12-Month Targets</h3><p style="color:var(--muted);">Wesco PoC live → $1.5M+ ARR → 3-5 customers → seed/Series A raise on Wesco proof. 90% orphan attribution accuracy. &lt;5ms gateway latency. 100% cascade deprovision.</p></div>
+    </div>
+    <div class="card" style="display:flex;gap:1rem;">
+      <span style="color:var(--accent2);font-weight:800;font-size:1.1rem;min-width:2rem;">12</span>
+      <div><h3>Ask + Next Steps</h3><p style="color:var(--muted);">[Funding amount TBD]. Use of funds: close the critical build gaps, stand up Wesco PoC, hire 2-3 engineers + enterprise sales. The graph moat compounds — every customer makes it harder to displace.</p></div>
+    </div>
+  </div>
+</div>
+
+<hr class="divider" style="max-width:1100px;margin:0 auto;">
+
+<!-- ONE-PAGER -->
+<div class="section" id="onepager">
+  <div class="section-title">One-Pager</div>
+  <div class="section-sub">Leave-behind for CISO meetings and investor conversations</div>
+
+  <div style="background:var(--surface);border:1px solid var(--border);border-radius:0.75rem;padding:2.5rem;max-width:780px;margin:0 auto;">
+    <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:2rem;flex-wrap:wrap;gap:1rem;">
+      <div>
+        <div style="font-size:1.5rem;font-weight:800;margin-bottom:0.25rem;">🏷️ Pedigree</div>
+        <div style="color:var(--muted);font-size:0.9rem;">Every Agent Has a Pedigree.</div>
+      </div>
+      <div style="text-align:right;">
+        <span class="tag">Seed Stage</span>
+        <span class="tag">Enterprise AI Governance</span>
+      </div>
+    </div>
+
+    <h3 style="font-size:1.1rem;margin-bottom:0.75rem;">The Problem</h3>
+    <p style="color:var(--muted);margin-bottom:1.5rem;font-size:0.95rem;">Enterprises are deploying thousands of AI agents across sensitive systems. None of their IAM tools answer the questions that matter: Who owns this agent? What can it access? What happens when the human who created it leaves the company? The result: orphaned agents with live credentials, scope violations, and audit gaps that regulators are starting to notice.</p>
+
+    <h3 style="font-size:1.1rem;margin-bottom:0.75rem;">The Solution</h3>
+    <p style="color:var(--muted);margin-bottom:1.5rem;font-size:0.95rem;">Pedigree treats every AI agent as a digital child of a verified human in the HRIS org chart. Agents inherit a strict subset of their parent's entitlements. When the parent is terminated in Workday, the entire agent subtree is automatically deprovisioned in under 60 seconds — with a complete audit bundle. Every action traceable. Every lifecycle event governed.</p>
+
+    <h3 style="font-size:1.1rem;margin-bottom:0.75rem;">Why We Win</h3>
+    <p style="color:var(--muted);margin-bottom:0.75rem;font-size:0.95rem;"><strong style="color:var(--text);">Platform-agnostic:</strong> Works across Microsoft, AWS, Google, Salesforce, and custom agents. We don't compete with Entra Agent ID — we complete it. "Entra tells you who the agent is. Pedigree tells you why it exists and what happens when the human leaves."</p>
+    <p style="color:var(--muted);margin-bottom:1.5rem;font-size:0.95rem;"><strong style="color:var(--text);">The graph moat:</strong> Once the HRIS org chart is wired and the agent fleet is mapped, ripping Pedigree out means rebuilding years of lineage history. The platform becomes the system of record — every other tool consumes us via API.</p>
+
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;margin-bottom:1.5rem;">
+      <div>
+        <h3 style="font-size:0.9rem;color:var(--muted);margin-bottom:0.5rem;text-transform:uppercase;letter-spacing:0.05em;">Market</h3>
+        <p style="font-size:0.9rem;">$12.2B NHI market today → $38.8B by 2036. 91% of enterprises using agents. Only 10% have governance. $1B acquisition (Veza) validates the category.</p>
+      </div>
+      <div>
+        <h3 style="font-size:0.9rem;color:var(--muted);margin-bottom:0.5rem;text-transform:uppercase;letter-spacing:0.05em;">Traction</h3>
+        <p style="font-size:0.9rem;">Design partner: Wesco International (Fortune 500). Head of IAM has articulated the exact governance spec. Blocking Copilot deployment until Pedigree exists.</p>
+      </div>
+      <div>
+        <h3 style="font-size:0.9rem;color:var(--muted);margin-bottom:0.5rem;text-transform:uppercase;letter-spacing:0.05em;">Business Model</h3>
+        <p style="font-size:0.9rem;">Free Orphan List → $75–200/agent/month. 1,000 agents = $1.2M ARR/customer. Enterprise contracts $500K–$2M.</p>
+      </div>
+      <div>
+        <h3 style="font-size:0.9rem;color:var(--muted);margin-bottom:0.5rem;text-transform:uppercase;letter-spacing:0.05em;">What's Built</h3>
+        <p style="font-size:0.9rem;">FastAPI backend, React UI, mock Microsoft connectors, Neo4j graph schema, full docs, CI/CD. Demo-ready MVP scaffold with 90-day production roadmap.</p>
+      </div>
+    </div>
+
+    <div style="border-top:1px solid var(--border);padding-top:1.25rem;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:0.5rem;">
+      <div style="font-size:0.85rem;color:var(--muted);">github.com/mattrob333/pedigree4</div>
+      <div style="font-size:0.85rem;color:var(--muted);">github.com/mattrob333/pedigree-gtm</div>
+    </div>
+  </div>
+</div>
+
+<hr class="divider" style="max-width:1100px;margin:0 auto;">
+
+<!-- REPO STATUS -->
+<div class="section">
+  <div class="section-title">Repo Assessment</div>
+  <div class="section-sub">Honest evaluation of what's built and what's next</div>
+  <div class="cards">
+    <div class="card">
+      <div class="card-icon">✅</div>
+      <h3>What's Built (Demo-Ready)</h3>
+      <p style="color:var(--muted);font-size:0.9rem;">FastAPI backend with humans, agents, policies, runtime evaluation, termination cascade, audit endpoints. Mock Microsoft service (Dataverse + Graph). Neo4j + Postgres schemas. React UI backed by live API. Docker Compose demo stack. Smoke tests. Full documentation set. CI/CD on GitHub Actions.</p>
+    </div>
+    <div class="card">
+      <div class="card-icon">🔨</div>
+      <h3>Critical Gaps (Pre-PoC)</h3>
+      <p style="color:var(--muted);font-size:0.9rem;">Real HRIS connectors (Workday/UKG REST + webhooks). Real Entra connector (Graph API + Entra Agent ID). Persistent storage (Postgres + Neo4j not yet wired). Auth on termination webhook (critical security). Multi-tenancy enforcement.</p>
+    </div>
+    <div class="card">
+      <div class="card-icon">📅</div>
+      <h3>Timeline Estimate</h3>
+      <p style="color:var(--muted);font-size:0.9rem;"><strong style="color:var(--text);">Wesco PoC ready:</strong> 6–8 weeks focused engineering. <strong style="color:var(--text);">v1.0 production:</strong> 4–5 months with 2–3 engineers. The foundation is solid — the gaps are well-understood and addressable.</p>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <p>Pedigree — Every Agent Has a Pedigree. | <a href="https://github.com/mattrob333/pedigree4">GitHub</a> · <a href="https://github.com/mattrob333/pedigree-gtm">This Site</a></p>
+  <p style="margin-top:0.5rem;font-size:0.75rem;">Confidential — For investor and partner use only</p>
+</footer>
+
+</body>
+</html>
