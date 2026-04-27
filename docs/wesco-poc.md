@@ -6,9 +6,9 @@
 
 ## Design Partner Context
 
-**Company:** Wesco International (NYSE: WCC) — Fortune 500 electrical and industrial distribution company. $22B+ annual revenue. 50,000+ employees globally.
+**Company:** Wesco International (NYSE: WCC) - Fortune 500 electrical and industrial distribution company. $22B+ annual revenue. 50,000+ employees globally.
 
-**Contact:** Head of IAM — has articulated the exact 8-gap governance spec that Pedigree addresses.
+**Contact:** Head of IAM - has articulated the exact 8-gap governance spec that Pedigree addresses.
 
 **Status:** Active design partner conversation. Blocking Copilot Studio deployment pending governance solution.
 
@@ -18,23 +18,23 @@
 
 ## Why Wesco is the Perfect Design Partner
 
-1. **Fortune 500 credibility** — "Wesco International deployed Pedigree" is a reference that opens every subsequent enterprise conversation
-2. **Articulated spec** — They came to us with the exact 8 gaps. We're not selling to them; we're solving a problem they already defined
-3. **Urgent blocker** — Copilot Studio deployment is blocked. There is organizational pressure to resolve this, which means budget and timeline urgency
-4. **Workday + Entra** — Standard HRIS + IdP stack that covers most F500 enterprises. Building for Wesco means building for the next 50 customers
+1. **Fortune 500 credibility** - "Wesco International deployed Pedigree" is a reference that opens every subsequent enterprise conversation
+2. **Articulated spec** - They came to us with the exact 8 gaps. We're not selling to them; we're solving a problem they already defined
+3. **Urgent blocker** - Copilot Studio deployment is blocked. There is organizational pressure to resolve this, which means budget and timeline urgency
+4. **Workday + Entra** - Standard HRIS + IdP stack that covers most F500 enterprises. Building for Wesco means building for the next 50 customers
 
 ---
 
 ## 90-Day PoC Plan
 
-### Sprint 1: Discovery & Orphan List (Days 1–30)
+### Sprint 1: Discovery & Orphan List (Days 1-30)
 
 **Objective:** Generate Wesco's Orphan List. Make the problem visible to the CISO.
 
 **Work:**
 - Connect to Wesco's Workday instance (read-only) via REST API
 - Pull Entra Agent ID inventory (all registered agents in their tenant)
-- Run attribution — match agents to humans via AadUserId, UPN, email
+- Run attribution - match agents to humans via AadUserId, UPN, email
 - Generate the Orphan List: agents with no resolvable human parent
 - Deliver the Orphan List to the CISO team with risk scoring
 
@@ -44,7 +44,7 @@
 
 ---
 
-### Sprint 2: Parent Assignment & Scope Enforcement (Days 31–60)
+### Sprint 2: Parent Assignment & Scope Enforcement (Days 31-60)
 
 **Objective:** Assign parents to the top 50 agents. Demonstrate scope enforcement.
 
@@ -60,7 +60,7 @@
 
 ---
 
-### Sprint 3: Cascade Demo & Contract (Days 61–90)
+### Sprint 3: Cascade Demo & Contract (Days 61-90)
 
 **Objective:** Live cascade deprovision demo. Generate audit bundle. Begin contract conversation.
 
@@ -101,7 +101,7 @@ After PoC success, Wesco becomes our first public reference. The story arc:
 - Audit team asking questions that couldn't be answered
 
 **The PoC:**
-- Orphan List generated in 48 hours — revealed X agents with no human owner
+- Orphan List generated in 48 hours - revealed X agents with no human owner
 - Y scope violations identified (agents exceeding creator's access)
 - Live cascade demo: Z agents decommissioned in 47 seconds on simulated termination
 

@@ -3,7 +3,7 @@
 **Date:** April 27, 2026  
 **Status:** Ready for Engineering  
 **Scope:** MVP focused on Microsoft Copilot Studio + Entra-heavy enterprises (Wesco-style design partner PoC). 90-day delivery target.  
-**Goal:** Deliver the core "Human Org Chart for AI Agents" value: automated discovery/attribution of agents, lineage graph, HR-tied lifecycle (cascade deprovision), basic runtime policy enforcement stub, and app-owner visibility — enough to unblock safe Copilot Studio adoption.
+**Goal:** Deliver the core "Human Org Chart for AI Agents" value: automated discovery/attribution of agents, lineage graph, HR-tied lifecycle (cascade deprovision), basic runtime policy enforcement stub, and app-owner visibility - enough to unblock safe Copilot Studio adoption.
 
 ---
 
@@ -33,7 +33,7 @@
 **Tertiary: Business User / Agent Maker**
 - "When I create an agent in Copilot Studio, it automatically gets attached to me with the right scope."
 
-**MVP User Stories (Epic → Stories):**
+**MVP User Stories (Epic -> Stories):**
 
 **Epic 1: Discovery & Attribution (P0)**
 - US1.1: As IAM admin, I can connect Pedigree to a Power Platform environment + Entra tenant so that all `bot` records are discovered via Dataverse API.
@@ -44,7 +44,7 @@
 **Epic 2: HR-Tied Lifecycle (P0)**
 - US2.1: As HRIS (via webhook or scheduled sync), on employee termination event, Pedigree marks the human inactive and triggers cascade: reassign all child agents to "Compliance Archive" owner via Power Platform reassign API + set bot state to Inactive + log full lineage snapshot to SIEM.
 - US2.2: As IAM admin, I can simulate termination in UI and preview the cascade impact (list of agents, new owner, audit entry).
-- US2.3: As system, on reorg/promotion in HRIS, I update the human's position in the graph and re-evaluate inherited scope for child agents (no auto-reprovision yet — manual approval in v1.1).
+- US2.3: As system, on reorg/promotion in HRIS, I update the human's position in the graph and re-evaluate inherited scope for child agents (no auto-reprovision yet - manual approval in v1.1).
 
 **Epic 3: Scope & Basic Policy (P1)**
 - US3.1: As IAM admin, when an agent is created/updated, I can define or inherit a "scope envelope" (capped at parent's entitlements snapshot) and see violations flagged.
@@ -53,7 +53,7 @@
 
 **Epic 4: App Owner Console (P1)**
 - US4.1: As SharePoint/Dataverse owner, I can connect my resource to Pedigree and see a list of agents (with human Pedigree lineage) that have it as knowledge source or action target.
-- US4.2: As app owner, I can one-click "Revoke Access" → triggers reassign or disable of the agent + notification to human owner.
+- US4.2: As app owner, I can one-click "Revoke Access" -> triggers reassign or disable of the agent + notification to human owner.
 - US4.3: As IAM admin, I see aggregated view across all app owners and pending revokes.
 
 **Epic 5: Runtime Stub + Demo (P2 for MVP)**
@@ -61,7 +61,7 @@
 - US5.2: As system, all runtime decisions are logged with full Pedigree context (human parent, policy evaluated, decision).
 
 **Non-Functional (MVP):**
-- Multi-tenant: Support 1–5 Power Platform environments per customer tenant.
+- Multi-tenant: Support 1-5 Power Platform environments per customer tenant.
 - Performance: Discovery sync <5 min for 5k agents; policy eval <10ms p99.
 - Security: SOC2-aligned logging, least-privilege Entra app, encryption at rest/transit.
 - Usability: Web UI (React + Tailwind) with role-based access (IAM Admin, App Owner, Viewer).
@@ -72,7 +72,7 @@
 - Advanced SoD stateful sequence tracking across sessions.
 - DLP redaction on LLM outputs.
 - Self-service agent request portal.
-- Multi-IdP support (Okta, Ping — Entra-first for MVP).
+- Multi-IdP support (Okta, Ping - Entra-first for MVP).
 - Predictive risk scoring with ML.
 - Full white-label / marketplace packaging.
 - FedRAMP / high-trust compliance packs.
@@ -88,7 +88,7 @@
 - Basic scope snapshot + creation-time policy check
 - App owner console (SharePoint/Dataverse focus)
 - Audit logging + SIEM export (JSON)
-- Demo runtime stub (proxy for 2–3 sample actions)
+- Demo runtime stub (proxy for 2-3 sample actions)
 - Role-based web UI + RBAC
 
 **Should Have:**
@@ -111,7 +111,7 @@
 
 ## 4. Acceptance Criteria (High-Level)
 - **AC1 (Discovery):** After connecting a test Power Platform env with 50+ agents, 100% are listed in Pedigree with correct human parent (or orphan flag) within 10 minutes.
-- **AC2 (Lifecycle):** Simulate termination of a human who owns 5 agents → all 5 are reassigned via API, set Inactive, full lineage + decision log exported to test SIEM within 60 seconds.
+- **AC2 (Lifecycle):** Simulate termination of a human who owns 5 agents -> all 5 are reassigned via API, set Inactive, full lineage + decision log exported to test SIEM within 60 seconds.
 - **AC3 (Scope):** Agent created by a human with "read-only Finance" entitlements cannot be granted "write Payments" scope at creation time (flagged + blocked in demo).
 - **AC4 (Console):** App owner sees their resource in the list with 3 linked agents (human Pedigrees visible) and can successfully revoke one.
 - **AC5 (Runtime Stub):** Sample action through proxy is blocked when it violates a test SoD rule tied to the agent's human parent role; decision logged with full context.
@@ -131,10 +131,10 @@
 ---
 
 ## 6. Risks & Mitigations (MVP)
-- **Risk:** Dataverse webhook reliability or rate limits → **Mitigation:** Hybrid poll (every 5 min) + change tracking + exponential backoff; document fallback.
-- **Risk:** Entra Agent ID still preview / changing → **Mitigation:** Build Dataverse + Entra user core first; make Agent ID sync optional/pluggable.
-- **Risk:** Customer reluctance to grant broad Dataverse/Entra permissions → **Mitigation:** Least-privilege app registration wizard + granular scopes documented; start with read-only discovery, add reassign later.
-- **Risk:** HRIS integration complexity (custom Workday fields) → **Mitigation:** Standard fields (email, employee ID, manager, termination date) for MVP; customer-specific mapping UI in v1.1.
+- **Risk:** Dataverse webhook reliability or rate limits -> **Mitigation:** Hybrid poll (every 5 min) + change tracking + exponential backoff; document fallback.
+- **Risk:** Entra Agent ID still preview / changing -> **Mitigation:** Build Dataverse + Entra user core first; make Agent ID sync optional/pluggable.
+- **Risk:** Customer reluctance to grant broad Dataverse/Entra permissions -> **Mitigation:** Least-privilege app registration wizard + granular scopes documented; start with read-only discovery, add reassign later.
+- **Risk:** HRIS integration complexity (custom Workday fields) -> **Mitigation:** Standard fields (email, employee ID, manager, termination date) for MVP; customer-specific mapping UI in v1.1.
 
 ---
 
@@ -146,9 +146,9 @@
 ---
 
 ## 8. Release & Rollout Plan (MVP)
-**Sprint 1–2 (Weeks 1–4):** Core platform skeleton + Dataverse connector + Entra user resolution + basic graph CRUD + RBAC UI.
-**Sprint 3–4 (Weeks 5–8):** HRIS sync + cascade logic + reassign API integration + orphan management + scope snapshot.
-**Sprint 5–6 (Weeks 9–12):** App owner console + basic policy engine + demo runtime proxy + audit/SIEM export + end-to-end testing + security review.
+**Sprint 1-2 (Weeks 1-4):** Core platform skeleton + Dataverse connector + Entra user resolution + basic graph CRUD + RBAC UI.
+**Sprint 3-4 (Weeks 5-8):** HRIS sync + cascade logic + reassign API integration + orphan management + scope snapshot.
+**Sprint 5-6 (Weeks 9-12):** App owner console + basic policy engine + demo runtime proxy + audit/SIEM export + end-to-end testing + security review.
 **Week 13:** PoC hardening, docs, training for design partner, go-live.
 
 **Definition of Done for MVP:** All Must-Have stories pass ACs, pen-test clean, design partner demo successful, code + docs in repo, monitoring dashboards live.

@@ -6,9 +6,9 @@
 
 | Tier | Price | Included | Target Customer |
 |---|---|---|---|
-| Discovery | Free | HRIS sync, Entra inventory, Orphan List | All enterprises — top of funnel |
-| Core | $75–100/agent/month | Parent assignment, scope enforcement, lifecycle automation, standard audit | Mid-market, 500–2,000 agents |
-| Enterprise | $150–200/agent/month | Runtime MCP gateway, SoD + DLP, App Owner Console, custom connectors, dedicated support, SOX/HIPAA bundle | F500, 2,000+ agents |
+| Discovery | Free | HRIS sync, Entra inventory, Orphan List | All enterprises - top of funnel |
+| Core | $75-100/agent/month | Parent assignment, scope enforcement, lifecycle automation, standard audit | Mid-market, 500-2,000 agents |
+| Enterprise | $150-200/agent/month | Runtime MCP gateway, SoD + DLP, App Owner Console, custom connectors, dedicated support, SOX/HIPAA bundle | F500, 2,000+ agents |
 
 ---
 
@@ -22,9 +22,9 @@
 | 5,000 | $6.0M | $9.0M | $12.0M |
 | 10,000 | $12.0M | $18.0M | $24.0M |
 
-**Realistic initial contract (Year 1):** 500–1,000 agents at Core tier = $600K–$1.2M ARR per customer
+**Realistic initial contract (Year 1):** 500-1,000 agents at Core tier = $600K-$1.2M ARR per customer
 
-**Realistic expansion (Year 2):** 2,000–5,000 agents at Enterprise tier = $3M–$10M ARR per customer
+**Realistic expansion (Year 2):** 2,000-5,000 agents at Enterprise tier = $3M-$10M ARR per customer
 
 ---
 
@@ -46,12 +46,12 @@
 | Cost | Estimate |
 |---|---|
 | One data breach from orphaned agent (Ponemon Institute avg) | $4.4M |
-| One failed SOX audit finding | $500K–$2M in remediation + fines |
-| One FTE dedicated to manual agent cleanup | $150–200K/year |
-| Blocked AI deployment (productivity loss, 100 users) | $500K–$1M/year |
+| One failed SOX audit finding | $500K-$2M in remediation + fines |
+| One FTE dedicated to manual agent cleanup | $150-200K/year |
+| Blocked AI deployment (productivity loss, 100 users) | $500K-$1M/year |
 | Pedigree contract (1,000 agents, Core) | $1.2M/year |
 
-**Expected ROI:** 5–10× in Year 1 when any of: a breach is prevented, an audit is passed, or blocked AI deployment is unblocked.
+**Expected ROI:** 5-10x in Year 1 when any of: a breach is prevented, an audit is passed, or blocked AI deployment is unblocked.
 
 ---
 
@@ -61,9 +61,9 @@
 - $600K ARR initial contract
 
 **Year 1 expansion triggers:**
-- New Copilot Studio deployment approved (adds 200+ agents) — upsell to Enterprise
-- Security incident at a competitor triggers urgency — upsell runtime gateway
-- SOX audit cycle — upsell SOX bundle + dedicated support
+- New Copilot Studio deployment approved (adds 200+ agents) - upsell to Enterprise
+- Security incident at a competitor triggers urgency - upsell runtime gateway
+- SOX audit cycle - upsell SOX bundle + dedicated support
 
 **Year 2 expansion:**
 - Full agent fleet onboarding (business units joining)
@@ -72,7 +72,7 @@
 - Multi-tenant support (subsidiaries / acquired companies)
 
 **Churn characteristics:**
-- The lineage graph is load-bearing — churning requires rebuilding years of history
+- The lineage graph is load-bearing - churning requires rebuilding years of history
 - App Owner Console creates internal champions at the system owner level
 - Compliance audit bundles create compliance team dependency
 - Expected NRR: 120%+ (expansion exceeds churn)
@@ -83,13 +83,13 @@
 
 | Company | ARR at Raise | Valuation | Multiple |
 |---|---|---|---|
-| Veza (acquired by ServiceNow) | ~$50–100M est. | $1B | 10–20× |
-| Okta (IPO 2017) | $160M | $1.8B | 11× |
-| Cyberark (IPO 2014) | $160M | $800M | 5× |
-| Astrix Security (Series B est.) | Early | $150–200M est. | N/A |
+| Veza (acquired by ServiceNow) | ~$50-100M est. | $1B | 10-20x |
+| Okta (IPO 2017) | $160M | $1.8B | 11x |
+| Cyberark (IPO 2014) | $160M | $800M | 5x |
+| Astrix Security (Series B est.) | Early | $150-200M est. | N/A |
 
-**Seed stage comparable:** $5–10M ARR → $50–100M valuation at 10-15× revenue multiple
-**Series A comparable:** $15–30M ARR → $150–300M valuation at 10× revenue multiple
+**Seed stage comparable:** $5-10M ARR -> $50-100M valuation at 10-15x revenue multiple
+**Series A comparable:** $15-30M ARR -> $150-300M valuation at 10x revenue multiple
 
 ---
 

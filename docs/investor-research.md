@@ -1,11 +1,11 @@
-# Pedigree — Investor Research & Market Analysis
+# Pedigree - Investor Research & Market Analysis
 *Prepared: 2026-04-27 | For: Seed/Series A Fundraising*
 
 ---
 
 ## The Thesis in One Sentence
 
-Pedigree is the **platform-agnostic human-agent lineage layer** — the governance primitive that every enterprise needs regardless of whether they run Microsoft, AWS, Google, Salesforce, or custom AI agents. We don't compete with the hyperscalers; we complete them.
+Pedigree is the **platform-agnostic human-agent lineage layer** - the governance primitive that every enterprise needs regardless of whether they run Microsoft, AWS, Google, Salesforce, or custom AI agents. We don't compete with the hyperscalers; we complete them.
 
 ---
 
@@ -13,9 +13,9 @@ Pedigree is the **platform-agnostic human-agent lineage layer** — the governan
 
 ### The Convergence That Created the Gap
 
-Three things happened simultaneously in 2025–2026 that created a governance vacuum no hyperscaler can fill:
+Three things happened simultaneously in 2025-2026 that created a governance vacuum no hyperscaler can fill:
 
-1. **Agent proliferation hit escape velocity.** NHIs (non-human identities) now outnumber humans 25–100× at Fortune 500 enterprises. Agents created by Copilot Studio, LangChain, n8n, Zapier, and custom builds are being deployed faster than any governance team can track.
+1. **Agent proliferation hit escape velocity.** NHIs (non-human identities) now outnumber humans 25-100x at Fortune 500 enterprises. Agents created by Copilot Studio, LangChain, n8n, Zapier, and custom builds are being deployed faster than any governance team can track.
 
 2. **The hyperscalers built identity infrastructure, not governance.** Microsoft Entra Agent ID gives agents a managed identity. AWS Agent Registry catalogs them. Google Cloud API Registry lists tools. **None of them answer the questions that keep CISOs awake:**
    - Who is the *human* responsible when this agent takes a bad action?
@@ -26,7 +26,7 @@ Three things happened simultaneously in 2025–2026 that created a governance va
 
 ### The Market Numbers
 
-- **NHI Access Management market:** $12.2B in 2026 → $38.8B by 2036 (CAGR ~12%)
+- **NHI Access Management market:** $12.2B in 2026 -> $38.8B by 2036 (CAGR ~12%)
 - **Only 10% of enterprises** have a clear strategy to manage AI agents (Fortune/Okta, April 2026)
 - **91% of organizations** are already using AI agents; only 22% treat them as independent identities (Gravitee, 2026)
 - **92% of security leaders** say legacy IAM wasn't built for this problem
@@ -43,7 +43,7 @@ Every hyperscaler is building governance for *their own* agents:
 - Microsoft Agent 365 ($15/user/month) governs Copilot Studio and Entra Agent ID workloads well. It's weak on non-Microsoft agents.
 - AWS Agent Registry catalogs Bedrock AgentCore workloads. No HRIS. No human lineage.
 - Google Cloud API Registry is tool-focused, developer-centric, not enterprise governance.
-- Veza (now ServiceNow) does access graph and human mapping — no HR cascade, no scope inheritance.
+- Veza (now ServiceNow) does access graph and human mapping - no HR cascade, no scope inheritance.
 
 **The enterprise reality:** Large companies don't run one cloud. They run Microsoft *and* Salesforce *and* custom Python agents *and* n8n workflows *and* Copilot Studio *and* AWS Bedrock. They need governance that spans all of it.
 
@@ -137,13 +137,13 @@ We are a **governance layer on top of Entra, not a competitor to it.** Every Mic
 ### What's Missing for Production (Honest)
 
 **Critical gaps before real enterprise deployment:**
-1. **Real HRIS connectors** — currently uses seed fixtures; needs live Workday/UKG REST + webhook integration
-2. **Real Entra connector** — mock Microsoft service needs replacement with production Graph API + Entra Agent ID integration
-3. **Persistent storage** — currently in-memory; Postgres + Neo4j schemas exist but aren't wired
-4. **Runtime MCP gateway** — the `/runtime/evaluate` endpoint is MVP; the MCP-aware inline gateway is the production version (v1.1)
-5. **Multi-tenancy** — DB schema has tenant table but isolation isn't enforced
-6. **Auth on webhooks** — the HRIS termination webhook has no auth (critical security issue, documented in code review)
-7. **Production hardening** — ~40 code review findings, including 2 critical security issues (hardcoded credentials in source)
+1. **Real HRIS connectors** - currently uses seed fixtures; needs live Workday/UKG REST + webhook integration
+2. **Real Entra connector** - mock Microsoft service needs replacement with production Graph API + Entra Agent ID integration
+3. **Persistent storage** - currently in-memory; Postgres + Neo4j schemas exist but aren't wired
+4. **Runtime MCP gateway** - the `/runtime/evaluate` endpoint is MVP; the MCP-aware inline gateway is the production version (v1.1)
+5. **Multi-tenancy** - DB schema has tenant table but isolation isn't enforced
+6. **Auth on webhooks** - the HRIS termination webhook has no auth (critical security issue, documented in code review)
+7. **Production hardening** - ~40 code review findings, including 2 critical security issues (hardcoded credentials in source)
 
 **Honest estimate for Wesco PoC readiness:** 6-8 weeks of focused engineering to close the critical gaps and stand up a live integration with their Workday + Entra environment.
 
@@ -153,10 +153,10 @@ We are a **governance layer on top of Entra, not a competitor to it.** Every Mic
 
 The code review found 40+ findings across backend, frontend, infra, and docs. The two most important:
 - **BE-01/BE-02:** Hardcoded credentials in source (needs immediate fix before any external demo)
-- **BE-07:** Termination webhook has no auth (anyone can trigger cascade — critical)
+- **BE-07:** Termination webhook has no auth (anyone can trigger cascade - critical)
 - **FE-01:** `demo.html` not bundled in production build (demo won't work in prod)
 
-These are fixable in a sprint. They don't reflect on the architecture — they reflect on early-stage development velocity.
+These are fixable in a sprint. They don't reflect on the architecture - they reflect on early-stage development velocity.
 
 ---
 
@@ -164,9 +164,9 @@ These are fixable in a sprint. They don't reflect on the architecture — they r
 
 ### Land: The Orphan List as a Trojan Horse
 
-**Free tier:** Connect HRIS + Entra → generate the "Orphan List" in 48 hours.
+**Free tier:** Connect HRIS + Entra -> generate the "Orphan List" in 48 hours.
 
-Every enterprise has orphaned agents — agents still active with live credentials, owned by people who left months ago. The Orphan List is the single most visceral demo in security. When the CISO sees 47 active agents owned by departed employees, Pedigree sells itself.
+Every enterprise has orphaned agents - agents still active with live credentials, owned by people who left months ago. The Orphan List is the single most visceral demo in security. When the CISO sees 47 active agents owned by departed employees, Pedigree sells itself.
 
 The Orphan List is free. The platform that cleans it up and prevents it from happening again is paid.
 
@@ -179,13 +179,13 @@ The Orphan List is free. The platform that cleans it up and prevents it from hap
 Expected: 500-5,000 agents per F500 customer within 18 months of deployment.
 
 **Example unit economics at scale:**
-- 1,000 agents × $100/month = $1.2M ARR per customer
+- 1,000 agents x $100/month = $1.2M ARR per customer
 - 10 enterprise customers = $12M ARR
-- Enterprise contract ranges: $500K–$2M ARR
+- Enterprise contract ranges: $500K-$2M ARR
 
 ### Wesco as Launch Partner
 
-Wesco International / Anixter (Fortune 500) has already articulated the exact 8-gap spec that Pedigree addresses. They are blocking Copilot Studio deployment until governance exists. This is the design partner PoC — success here is both category proof and the first reference customer story.
+Wesco International / Anixter (Fortune 500) has already articulated the exact 8-gap spec that Pedigree addresses. They are blocking Copilot Studio deployment until governance exists. This is the design partner PoC - success here is both category proof and the first reference customer story.
 
 **The Wesco PoC plan:**
 - 90 days to live graph + basic runtime with their Workday + Entra environment
@@ -210,11 +210,11 @@ Wesco International / Anixter (Fortune 500) has already articulated the exact 8-
 
 ## The Investor Narrative: Platform Complement, Not Platform Competitor
 
-**The Okta parallel:** Okta didn't compete with Active Directory — it made AD usable across cloud apps. It became the identity layer that every SaaS app integrated with. $17B market cap.
+**The Okta parallel:** Okta didn't compete with Active Directory - it made AD usable across cloud apps. It became the identity layer that every SaaS app integrated with. $17B market cap.
 
-**The Snowflake parallel:** Snowflake didn't compete with data warehouses — it became the cross-cloud data layer that sat above them all. $50B+ market cap at peak.
+**The Snowflake parallel:** Snowflake didn't compete with data warehouses - it became the cross-cloud data layer that sat above them all. $50B+ market cap at peak.
 
-**Pedigree's parallel:** We don't compete with Entra or ServiceNow or AWS. We become the cross-platform governance layer that every enterprise needs regardless of which agent platforms they run. The HRIS org chart is already universal — we make it the universal governance primitive for AI agents.
+**Pedigree's parallel:** We don't compete with Entra or ServiceNow or AWS. We become the cross-platform governance layer that every enterprise needs regardless of which agent platforms they run. The HRIS org chart is already universal - we make it the universal governance primitive for AI agents.
 
 **The bet:** Agent governance becomes a $5-10B standalone market, won by whoever owns the authoritative human-agent lineage graph. That graph has to be HRIS-native, platform-agnostic, and hard to rip out. That's Pedigree.
 
@@ -222,12 +222,12 @@ Wesco International / Anixter (Fortune 500) has already articulated the exact 8-
 
 ## Market Research Sources
 
-1. NHI Access Management Market: $12.2B (2026) → $38.8B (2036) — Yahoo Finance / Market Research
-2. 91% of orgs using AI agents; only 10% have a governance strategy — Fortune / Okta, April 2026
-3. 22% of organizations treat AI agents as independent identities — Gravitee, 2026
-4. ServiceNow acquires Veza for $1B — December 2025 (validates category)
-5. Microsoft Agent 365 GA at $15/user/month — May 2026
-6. AWS Agent Registry preview — AgentCore, April 2026
+1. NHI Access Management Market: $12.2B (2026) -> $38.8B (2036) - Yahoo Finance / Market Research
+2. 91% of orgs using AI agents; only 10% have a governance strategy - Fortune / Okta, April 2026
+3. 22% of organizations treat AI agents as independent identities - Gravitee, 2026
+4. ServiceNow acquires Veza for $1B - December 2025 (validates category)
+5. Microsoft Agent 365 GA at $15/user/month - May 2026
+6. AWS Agent Registry preview - AgentCore, April 2026
 7. Gartner 2026 IAM Predictions: NHI visibility "no longer optional"
-8. Forbes: "Agent Registries Become The New Battleground For Cloud Giants" — April 2026
-9. Strata.io: Only 23% of organizations have formal enterprise-wide agent identity strategy — 2026
+8. Forbes: "Agent Registries Become The New Battleground For Cloud Giants" - April 2026
+9. Strata.io: Only 23% of organizations have formal enterprise-wide agent identity strategy - 2026

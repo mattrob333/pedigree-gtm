@@ -2,7 +2,7 @@
 
 ## The Landscape at a Glance
 
-The agent governance space is crowded but fragmented. No competitor owns the HRIS-native lineage primitive. Everyone is approaching the problem from a different angle — none of them cover the full stack.
+The agent governance space is crowded but fragmented. No competitor owns the HRIS-native lineage primitive. Everyone is approaching the problem from a different angle - none of them cover the full stack.
 
 ---
 
@@ -40,7 +40,7 @@ The agent governance space is crowded but fragmented. No competitor owns the HRI
 
 **Their gaps (Pedigree's opening):**
 - Governance for non-Microsoft agents is limited
-- No Workday/UKG HRIS connector — HR lifecycle is manual
+- No Workday/UKG HRIS connector - HR lifecycle is manual
 - No org-chart parent-child lineage graph
 - No cascade deprovision tied to HR termination
 - No app owner console
@@ -48,7 +48,7 @@ The agent governance space is crowded but fragmented. No competitor owns the HRI
 
 **The positioning:** *"Entra tells you who the agent is. Pedigree tells you why it exists and what happens when the human leaves."*
 
-**The partnership play:** Position as "governance brain on top of Entra" — not competitor. Microsoft Partner certification is the enterprise GTM path.
+**The partnership play:** Position as "governance brain on top of Entra" - not competitor. Microsoft Partner certification is the enterprise GTM path.
 
 ---
 
@@ -68,7 +68,7 @@ The agent governance space is crowded but fragmented. No competitor owns the HRI
 - No strict parent-scope inheritance
 - No HR-driven cascade lifecycle
 - No app owner console as a product
-- Acquisition creates roadmap uncertainty — Veza customers are reconsidering
+- Acquisition creates roadmap uncertainty - Veza customers are reconsidering
 - ServiceNow integration may dilute the focused agent governance story
 
 **The positioning:** *"Veza tells you what exists. Pedigree tells you who owns it forever, enforces what it should be able to do, and cleans it up when the human leaves."*
@@ -90,9 +90,9 @@ The agent governance space is crowded but fragmented. No competitor owns the HRI
 - JIT/ZSP is a proven enterprise pattern
 
 **Their gaps:**
-- No HRIS integration — human parent is not org-chart verified
+- No HRIS integration - human parent is not org-chart verified
 - No lineage graph
-- No long-term ownership story — focused on ephemeral access, not persistent governance
+- No long-term ownership story - focused on ephemeral access, not persistent governance
 - No cascade deprovision tied to HR events
 
 **The positioning:** *"Britive is great for runtime. But who owns the policy? When the policy owner leaves, who cleans up? Pedigree is the source of truth that feeds Britive."*
@@ -114,9 +114,9 @@ The agent governance space is crowded but fragmented. No competitor owns the HRI
 **Their gaps:**
 - No HRIS-native org chart
 - No cascade deprovision
-- No human lineage model — policies are role/attribute based, not human-parent based
+- No human lineage model - policies are role/attribute based, not human-parent based
 
-**The positioning:** *"PlainID enforces the policy. Pedigree defines what the policy should be — based on who the human parent is and what their org position allows."*
+**The positioning:** *"PlainID enforces the policy. Pedigree defines what the policy should be - based on who the human parent is and what their org position allows."*
 
 ---
 
@@ -134,13 +134,13 @@ The agent governance space is crowded but fragmented. No competitor owns the HRI
 - AWS distribution
 
 **Their gaps:**
-- No human ownership — catalog only
+- No human ownership - catalog only
 - No HRIS integration
 - No lifecycle automation
-- No governance enforcement — it's a registry, not a control plane
+- No governance enforcement - it's a registry, not a control plane
 - AWS-focused despite "cloud-agnostic" positioning
 
-**The positioning:** *"AWS tells you what agents exist. Pedigree governs them — who owns them, what they can do, and what happens when the human leaves."*
+**The positioning:** *"AWS tells you what agents exist. Pedigree governs them - who owns them, what they can do, and what happens when the human leaves."*
 
 ---
 
@@ -158,7 +158,7 @@ The agent governance space is crowded but fragmented. No competitor owns the HRI
 - Strong security positioning
 
 **Their gaps:**
-- No HRIS lineage — agent ownership is not HR-verified
+- No HRIS lineage - agent ownership is not HR-verified
 - No cascade deprovision on HR events
 - No org chart graph
 - Discovery-first, not governance-first
@@ -175,9 +175,9 @@ The agent governance space is crowded but fragmented. No competitor owns the HRI
 
 ## When Pedigree Loses (Be Honest)
 
-- Customer only runs Copilot Studio in M365 — Agent 365 may be sufficient
-- Budget is extremely constrained — free Veza (now ServiceNow) tier may win
-- No Workday/UKG — HRIS connectors are MVP; other HRIS requires custom integration
+- Customer only runs Copilot Studio in M365 - Agent 365 may be sufficient
+- Budget is extremely constrained - free Veza (now ServiceNow) tier may win
+- No Workday/UKG - HRIS connectors are MVP; other HRIS requires custom integration
 
 ---
 
